@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .navbar {
@@ -63,11 +64,16 @@ body{
 }
 .myPhoto{
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    height: 500px;
+    /* height: 500px; */
 }
 
 #greeting{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 500px;
     background-color: #f7990c;
     color: white;
@@ -88,8 +94,13 @@ body{
 }
 
 .myPhoto img{
-    height: 100%;
+    width: 250px;
     border-radius: 10px;
+}
+
+.cardPhoto img{
+    width: 250px;
+    height: 250px;
 }
 
 #hobby {
@@ -116,6 +127,8 @@ body{
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
     background-color: #f7990c;
     color: white;
     margin: 20px;
@@ -138,6 +151,7 @@ ul {
     color: black;
     font-size: 30px;
     text-decoration: none;
+    text-align: center;
 }
 a {
     color: black;
@@ -173,6 +187,20 @@ footer h5{
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
+    }
+    .greeting_box {
+        flex-direction: column;
+        width: 90%;
+    }
+    .myPhoto {
+        flex-direction: column;
+    }
+    .hobby_box{
+        flex-direction: column;
+    }
+    .card{
+        justify-content: center;
+        align-items: center;
     }
 }
 
