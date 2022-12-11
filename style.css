@@ -7,11 +7,12 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    background-color: white;
+    background-color: #d4d4d4;
     align-items: center;
 }
 body{
-    background-color: #747474;
+    background-color: #343434;
+    
 }
 
 .logo {
@@ -48,18 +49,22 @@ body{
     flex-direction: row;
     align-items: center;
 }
-.myPhoto{
+.photo{
     display: flex;
-    justify-content: space-around;
-    height: 500px;
-    background-color: #f7990c;
+    flex-direction: column;
+    background-color: #747474;
     color: white;
     margin: 20px;
     padding: 15px;
     flex: 2;
-    box-shadow: 0 2px 5px black;
+    box-shadow: 0 2px 5px whitesmoke;
     border-radius: 20px;
     opacity: 1;
+}
+.myPhoto{
+    display: flex;
+    justify-content: space-around;
+    height: 500px;
 }
 
 #greeting{
@@ -75,11 +80,11 @@ body{
 }
 
 #greeting:hover {
-    box-shadow: 1px 5px 10px black;
+    box-shadow: 1px 5px 10px white;
 }
 
-.myPhoto:hover {
-    box-shadow: 1px 5px 10px black;
+.photo:hover {
+    box-shadow: 1px 5px 10px white;
 }
 
 .myPhoto img{
@@ -87,8 +92,26 @@ body{
     border-radius: 10px;
 }
 
-.hobby {
+#hobby {
     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#hobby h2{
+    background-color: #747474;
+    color: white;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 0 2px 5px whitesmoke;
+    border-radius: 20px;
+    opacity: 1;
+    text-align: center;
+}
+
+.hobby_box {
+    display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
 }
 
@@ -104,7 +127,7 @@ body{
 }
 
 .card:hover {
-    box-shadow: 1px 5px 10px black;
+    box-shadow: 1px 5px 10px white;
 }
 
 ul {
@@ -113,7 +136,7 @@ ul {
 
 #greeting p{
     color: black;
-    font-size: 15px;
+    font-size: 30px;
     text-decoration: none;
 }
 a {
@@ -134,6 +157,17 @@ a {
 a:hover {
     color: darkslategrey;
     font-weight: bold;
+}
+
+footer{
+    background-color: black;
+    color: white;
+    height: 30px;
+    padding: 10px;
+}
+footer h5{
+    text-align: center;
+    font-display: normal;
 }
 
 @media screen and (max-width: 768px) {
