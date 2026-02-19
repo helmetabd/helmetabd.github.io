@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
+    '@nuxtjs/tailwindcss',
     '@nuxt/icon',
   ],
   devtools: { enabled: true },
@@ -32,6 +33,11 @@ export default defineNuxtConfig({
     baseURL: '/',
   },
 
+  tailwindcss: {
+    cssPath: '~/app.css',
+    configPath: 'tailwind.config.ts',
+  },
+
   nitro: {
     preset: 'static',
     output: {
@@ -40,17 +46,6 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: false,
-    },
-  },
-
-  vite: {
-    css: {
-      postcss: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      },
     },
   },
 })
