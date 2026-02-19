@@ -34,9 +34,11 @@ export default defineNuxtConfig({
   },
 
   tailwindcss: {
-    cssPath: '~/app.css',
+    cssPath: '@/assets/css/main.css',
     configPath: 'tailwind.config.ts',
   },
+
+  css: ['@/assets/css/main.css'],
 
   nitro: {
     preset: 'static',
