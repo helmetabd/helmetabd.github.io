@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/tailwindcss',
     '@nuxt/icon',
   ],
   devtools: { enabled: true },
@@ -34,12 +33,7 @@ export default defineNuxtConfig({
     buildAssetsDir: '/assets/',
   },
 
-  tailwindcss: {
-    cssPath: '@/assets/css/main.css',
-    configPath: 'tailwind.config.ts',
-  },
-
-  css: ['@/assets/css/main.css'],
+  css: ['~/assets/css/main.css'],
 
   nitro: {
     preset: 'static',
