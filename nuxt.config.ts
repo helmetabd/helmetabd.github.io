@@ -35,6 +35,7 @@ export default defineNuxtConfig({
 
   tailwindcss: {
     viewer: false,
+    cssPath: '~/app.css',
   },
 
   nitro: {
