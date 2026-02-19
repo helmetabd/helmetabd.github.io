@@ -39,6 +39,9 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'static',
+    output: {
+      publicDir: 'dist',
+    },
     prerender: {
       crawlLinks: true,
       failOnError: false,
