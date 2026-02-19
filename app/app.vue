@@ -13,3 +13,7 @@ useHead({
   }
 })
 </script>
+
+<style>
+@import '~/app.css';
+</style>
