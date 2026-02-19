@@ -1,5 +1,6 @@
-/* Basic styles for portfolio */
+/* Bootstrap 5.3.3 */
 
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
@@ -27,14 +28,30 @@ header {
   transition: all 0.3s;
 }
 
-nav a {
+.navbar {
+  background: rgba(17, 24, 39, 0.95);
+  padding: 1rem;
+}
+
+.navbar .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.navbar .nav-link {
   color: #f8fafc;
   text-decoration: none;
   transition: color 0.3s;
 }
 
-nav a:hover {
+.navbar .nav-link:hover {
   color: #ffffff;
+}
+
+.navbar .nav-link.active {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 /* Sections */
@@ -58,7 +75,7 @@ section {
 /* Buttons */
 .btn-primary {
   padding: 0.75rem 2rem;
-  background: #3b82f6;
+  background: #0d6efd;
   color: #ffffff;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -66,20 +83,20 @@ section {
 }
 
 .btn-primary:hover {
-  background: #2563eb;
+  background: #0b5ed7;
 }
 
 .btn-secondary {
   padding: 0.75rem 2rem;
-  border: 2px solid #3b82f6;
-  color: #3b82f6;
+  border: 2px solid #0d6efd;
+  color: #0d6efd;
   border-radius: 0.5rem;
   font-weight: 600;
   transition: all 0.3s;
 }
 
 .btn-secondary:hover {
-  background: #3b82f6;
+  background: #0d6efd;
   color: #ffffff;
 }
 
@@ -91,31 +108,16 @@ section {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Inputs */
-.input-field {
-  width: 100%;
-  padding: 0.75rem;
-  background: rgba(55, 65, 81, 0.3);
-  border: 1px solid rgba(75, 85, 99, 0.2);
-  border-radius: 0.5rem;
-  color: #ffffff;
-}
-
-.input-field:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 0 3px rgba(59, 130, 246, 0.5);
-}
-
 /* Footer */
 footer {
   background: rgba(17, 24, 39, 0.95);
   border-top: 1px solid rgba(55, 65, 81, 0.2);
+  padding: 3rem 0;
 }
 
 /* Utility */
 .text-gradient {
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(90deg, #0d6efd, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
