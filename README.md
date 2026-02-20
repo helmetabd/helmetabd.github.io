@@ -5,8 +5,8 @@ A professional portfolio website built with Nuxt.js 4, TypeScript, and Tailwind 
 ## 🚀 Features
 
 - **Modern Design**: Dark theme with blue accent color (#3B82F6)
-- **Responsive**: Fully responsive for mobile, tablet, and desktop
-- **Animated**: Smooth animations using VueUse Motion
+- **Responsive**: Fully responsive for mobile, tablet, and desktop using Bootstrap 5
+- **Animated**: Smooth CSS animations for better user experience
 - **Fast**: Built with Nuxt.js 4 and Vite for optimal performance
 - **SEO Optimized**: Meta tags and Open Graph tags configured
 - **TypeScript**: Full TypeScript support for type safety
@@ -15,9 +15,9 @@ A professional portfolio website built with Nuxt.js 4, TypeScript, and Tailwind 
 
 - **Framework**: Nuxt.js 4.3.1
 - **Language**: TypeScript 5.6
-- **Styling**: Tailwind CSS
+- **Styling**: Bootstrap 5.3
 - **Icons**: @nuxt/icon with Heroicons and Simple Icons
-- **Animations**: VueUse Motion
+- **Animations**: CSS animations
 
 ## 🛠️ Installation
 
@@ -43,15 +43,14 @@ npm run preview
 ```
 portfolio/
 ├── app/
-│   ├── components/       # Reusable Vue components
-│   ├── layouts/         # Layout components
-│   └── pages/           # Page components
-├── assets/
-│   └── css/            # Custom CSS styles
+│   ├── app.css         # Global CSS with Tailwind directives
+│   ├── components/     # Reusable Vue components
+│   ├── layouts/        # Layout components
+│   └── pages/          # Page components
 ├── data/
-│   └── portfolio.ts     # Portfolio data (easily editable)
-├── public/              # Static assets
-└── nuxt.config.ts       # Nuxt configuration
+│   └── portfolio.ts    # Portfolio data (easily editable)
+├── public/             # Static assets
+└── nuxt.config.ts      # Nuxt configuration
 ```
 
 ## ✏️ Customization
@@ -68,7 +67,7 @@ Edit `data/portfolio.ts` to update:
 
 ### Update Styling
 
-Edit `assets/css/main.css` to customize:
+Edit `app/app.css` to customize:
 
 - Color schemes
 - Component styles
@@ -167,4 +166,4 @@ This project is open source and available under the MIT License.
 
 ---
 
-Built with ❤️ using Nuxt.js and Tailwind CSS
+Built with ❤️ using Nuxt.js and Bootstrap 5

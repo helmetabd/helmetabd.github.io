@@ -14,6 +14,7 @@ useHead({
 })
 </script>
 
+
 <style>
-@import '~/assets/css/main.css';
+@import 'app.css';
 </style>

@@ -1,174 +1,101 @@
 <template>
   <div>
     <!-- Hero Section -->
-    <section id="hero"
-      class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-20 right-20 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl"></div>
-      </div>
+    <section id="hero" class="hero-section d-flex align-items-center justify-content-center">
+      <div class="hero-blob hero-blob-1"></div>
+      <div class="hero-blob hero-blob-2"></div>
 
-      <div class="container-custom relative z-10 text-center">
-        <div>
-          <h1 class="text-5xl md:text-7xl font-bold mb-6">
-            <span class="text-gradient">Hi, I'm</span>
-            <br />
-            <span class="text-white">{{ portfolioData.name }}</span>
-          </h1>
-          <p class="text-xl md:text-2xl text-gray-400 mb-8">
-            {{ portfolioData.title }}
-          </p>
-          <p class="text-lg text-gray-500 mb-12 max-w-2xl mx-auto">
-            {{ portfolioData.tagline }}
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#projects" class="btn-primary">
-              View My Work
-            </a>
-            <a href="#contact" class="btn-secondary">
-              Get In Touch
-            </a>
-          </div>
+      <div class="container position-relative text-center">
+        <h1 class="hero-title mb-3">
+          <span class="text-gradient">Hi, I'm</span><br />
+          <span class="text-white">{{ portfolioData.name }}</span>
+        </h1>
+        <p class="fs-4 text-secondary mb-2">{{ portfolioData.title }}</p>
+        <p class="text-muted mb-5 mx-auto" style="max-width: 540px;">{{ portfolioData.tagline }}</p>
+        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+          <a href="#projects" class="btn-primary">View My Work</a>
+          <a href="#contact" class="btn-secondary">Get In Touch</a>
         </div>
       </div>
 
-      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <span class="text-gray-400 text-2xl">↓</span>
-      </div>
+      <div class="hero-scroll-hint">↓</div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section-padding bg-gray-900">
-      <div class="container-custom">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div v-if="portfolioData.design.show_photos && portfolioData.gallery.length > 0">
-              <div class="relative">
-                <img :src="portfolioData.gallery[0]?.image" :alt="portfolioData.gallery[0]?.alt"
-                  class="rounded-2xl shadow-2xl w-full max-w-md mx-auto cursor-pointer hover:opacity-90 transition-opacity duration-300"
-                  @click="showGallery = true" />
-                <div class="absolute inset-0 rounded-2xl border-4 border-blue-500/20"></div>
-              </div>
+    <section id="about" class="section-padding bg-dark-1">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+
+          <div class="col-12 col-lg-5" v-if="portfolioData.design.show_photos && portfolioData.gallery.length > 0">
+            <div class="about-photo-wrapper" @click="showGallery = true">
+              <img :src="portfolioData.gallery[0]?.image" :alt="portfolioData.gallery[0]?.alt" class="about-photo" />
+              <div class="about-photo-border"></div>
             </div>
           </div>
 
-          <div>
-            <h2 class="section-title">About Me</h2>
-            <p class="text-gray-400 text-lg mb-8">
-              {{ portfolioData.about }}
-            </p>
+          <div class="col-12 col-lg-7">
+            <h2 class="section-title text-start mb-3">About Me</h2>
+            <p class="text-secondary mb-4">{{ portfolioData.about }}</p>
 
-            <div class="grid grid-cols-2 gap-6 mb-8">
-              <div class="card">
-                <span class="text-2xl mb-2">🎂</span>
-                <p class="text-gray-400 text-sm">Age</p>
-                <p class="text-white font-semibold">{{ portfolioData.age }} years old</p>
+            <div class="row g-3 mb-4">
+              <div class="col-6">
+                <div class="card h-100">
+                  <span class="info-icon">🎂</span>
+                  <p class="info-label">Age</p>
+                  <p class="info-value">{{ portfolioData.age }} years old</p>
+                </div>
               </div>
-              <div class="card">
-                <span class="text-2xl mb-2">📍</span>
-                <p class="text-gray-400 text-sm">Location</p>
-                <p class="text-white font-semibold">{{ portfolioData.location }}</p>
+              <div class="col-6">
+                <div class="card h-100">
+                  <span class="info-icon">📍</span>
+                  <p class="info-label">Location</p>
+                  <p class="info-value">{{ portfolioData.location }}</p>
+                </div>
               </div>
-              <div class="card">
-                <span class="text-2xl mb-2">✉️</span>
-                <p class="text-gray-400 text-sm">Email</p>
-                <p class="text-white font-semibold text-sm">{{ portfolioData.email }}</p>
+              <div class="col-6">
+                <div class="card h-100">
+                  <span class="info-icon">✉️</span>
+                  <p class="info-label">Email</p>
+                  <p class="info-value small">{{ portfolioData.email }}</p>
+                </div>
               </div>
-              <div class="card">
-                <span class="text-2xl mb-2">💼</span>
-                <p class="text-gray-400 text-sm">Experience</p>
-                <p class="text-white font-semibold">2+ years</p>
+              <div class="col-6">
+                <div class="card h-100">
+                  <span class="info-icon">💼</span>
+                  <p class="info-label">Experience</p>
+                  <p class="info-value">2+ years</p>
+                </div>
               </div>
             </div>
 
-            <a href="#contact" class="btn-primary inline-block">
-              Let's Work Together
-            </a>
+            <a href="#contact" class="btn-primary">Let's Work Together</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section-padding bg-gray-800">
-      <div class="container-custom">
-        <div class="text-center mb-16">
-          <h2 class="section-title">Skills & Expertise</h2>
-          <p class="section-subtitle">Technologies I work with</p>
-        </div>
+    <section id="skills" class="section-padding bg-dark-2">
+      <div class="container">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <p class="section-subtitle">Technologies I work with</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- Backend -->
-          <div class="card">
-            <div class="flex items-center mb-6">
-              <span class="text-2xl mr-3">⚙️</span>
-              <h3 class="text-xl font-bold text-white">Backend</h3>
-            </div>
-            <div class="space-y-4">
-              <div v-for="skill in portfolioData.skills.backend" :key="skill.name">
-                <div class="flex justify-between mb-1">
-                  <span class="text-gray-300">{{ skill.name }}</span>
-                  <span class="text-gray-400 text-sm">{{ skill.level }}</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" :style="{ width: getSkillWidth(skill.level) }"></div>
-                </div>
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-3" v-for="(category, key) in skillCategories" :key="key">
+            <div class="card h-100">
+              <div class="d-flex align-items-center mb-4">
+                <span class="fs-4 me-2">{{ category.icon }}</span>
+                <h3 class="fw-bold text-white mb-0 fs-5">{{ category.label }}</h3>
               </div>
-            </div>
-          </div>
-
-          <!-- Frontend -->
-          <div class="card">
-            <div class="flex items-center mb-6">
-              <span class="text-2xl mr-3">💻</span>
-              <h3 class="text-xl font-bold text-white">Frontend</h3>
-            </div>
-            <div class="space-y-4">
-              <div v-for="skill in portfolioData.skills.frontend" :key="skill.name">
-                <div class="flex justify-between mb-1">
-                  <span class="text-gray-300">{{ skill.name }}</span>
-                  <span class="text-gray-400 text-sm">{{ skill.level }}</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" :style="{ width: getSkillWidth(skill.level) }"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tools -->
-          <div class="card">
-            <div class="flex items-center mb-6">
-              <span class="text-2xl mr-3">🔧</span>
-              <h3 class="text-xl font-bold text-white">Tools</h3>
-            </div>
-            <div class="space-y-4">
-              <div v-for="skill in portfolioData.skills.tools" :key="skill.name">
-                <div class="flex justify-between mb-1">
-                  <span class="text-gray-300">{{ skill.name }}</span>
-                  <span class="text-gray-400 text-sm">{{ skill.level }}</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" :style="{ width: getSkillWidth(skill.level) }"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Other -->
-          <div class="card">
-            <div class="flex items-center mb-6">
-              <span class="text-2xl mr-3">✨</span>
-              <h3 class="text-xl font-bold text-white">Other</h3>
-            </div>
-            <div class="space-y-4">
-              <div v-for="skill in portfolioData.skills.other" :key="skill.name">
-                <div class="flex justify-between mb-1">
-                  <span class="text-gray-300">{{ skill.name }}</span>
-                  <span class="text-gray-400 text-sm">{{ skill.level }}</span>
-                </div>
-                <div class="skill-bar">
-                  <div class="skill-progress" :style="{ width: getSkillWidth(skill.level) }"></div>
+              <div class="d-flex flex-column gap-3">
+                <div v-for="skill in portfolioData.skills[key]" :key="skill.name">
+                  <div class="d-flex justify-content-between mb-1">
+                    <span class="text-secondary small">{{ skill.name }}</span>
+                    <span class="text-muted small">{{ skill.level }}</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" :style="{ width: getSkillWidth(skill.level) }"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -178,44 +105,34 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="section-padding bg-gray-900">
-      <div class="container-custom">
-        <div class="text-center mb-16">
-          <h2 class="section-title">Experience & Education</h2>
-          <p class="section-subtitle">My professional journey</p>
-        </div>
+    <section id="experience" class="section-padding bg-dark-1">
+      <div class="container">
+        <h2 class="section-title">Experience & Education</h2>
+        <p class="section-subtitle">My professional journey</p>
 
-        <div class="max-w-3xl mx-auto">
-          <!-- Experience -->
-          <div class="mb-16">
-            <h3 class="text-2xl font-bold text-white mb-8">Work Experience</h3>
-            <div class="space-y-8">
-              <div v-for="(exp, index) in portfolioData.experience" :key="index" class="timeline-item">
-                <div class="timeline-dot"></div>
-                <p class="timeline-date">{{ exp.period }}</p>
-                <h4 class="timeline-title">{{ exp.position }}</h4>
-                <p class="text-blue-500 font-semibold mb-2">{{ exp.company }}</p>
-                <p class="timeline-description mb-4">{{ exp.description }}</p>
-                <ul class="list-disc list-inside text-gray-400 space-y-1">
-                  <li v-for="achievement in exp.achievements" :key="achievement">
-                    {{ achievement }}
-                  </li>
-                </ul>
-              </div>
+        <div class="row g-5">
+          <div class="col-12 col-lg-6">
+            <h3 class="fw-bold text-white mb-4">Work Experience</h3>
+            <div v-for="(exp, index) in portfolioData.experience" :key="index" class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">{{ exp.period }}</p>
+              <h4 class="timeline-title">{{ exp.position }}</h4>
+              <p class="fw-semibold mb-2" style="color: var(--primary);">{{ exp.company }}</p>
+              <p class="timeline-description mb-3">{{ exp.description }}</p>
+              <ul class="ps-3 text-muted small">
+                <li v-for="achievement in exp.achievements" :key="achievement" class="mb-1">{{ achievement }}</li>
+              </ul>
             </div>
           </div>
 
-          <!-- Education -->
-          <div>
-            <h3 class="text-2xl font-bold text-white mb-8">Education</h3>
-            <div class="space-y-8">
-              <div v-for="(edu, index) in portfolioData.education" :key="index" class="timeline-item">
-                <div class="timeline-dot"></div>
-                <p class="timeline-date">{{ edu.year }}</p>
-                <h4 class="timeline-title">{{ edu.degree }}</h4>
-                <p class="text-blue-500 font-semibold mb-2">{{ edu.institution }}</p>
-                <p class="timeline-description">{{ edu.description }}</p>
-              </div>
+          <div class="col-12 col-lg-6">
+            <h3 class="fw-bold text-white mb-4">Education</h3>
+            <div v-for="(edu, index) in portfolioData.education" :key="index" class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">{{ edu.year }}</p>
+              <h4 class="timeline-title">{{ edu.degree }}</h4>
+              <p class="fw-semibold mb-2" style="color: var(--primary);">{{ edu.institution }}</p>
+              <p class="timeline-description">{{ edu.description }}</p>
             </div>
           </div>
         </div>
@@ -223,94 +140,59 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section-padding bg-gray-800">
-      <div class="container-custom">
-        <div class="text-center mb-16">
-          <h2 class="section-title">Featured Projects</h2>
-          <p class="section-subtitle">Some of my recent work</p>
-        </div>
+    <section id="projects" class="section-padding bg-dark-2">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Some of my recent work</p>
 
-        <!-- Major Projects -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-           <div v-for="(project, index) in portfolioData.major_projects" :key="project.name" class="project-card">
-             <div class="project-content">
-               <div v-if="project.image" class="mb-4">
-                 <img :src="project.image" :alt="project.name" class="project-image w-full h-48 object-cover rounded-lg" />
-               </div>
-               <div class="flex items-start justify-between mb-4">
-                 <div>
-                   <h3 class="project-title">{{ project.name }}</h3>
-                   <p class="text-blue-500 font-semibold">{{ project.type }}</p>
-                 </div>
-                 <span class="px-3 py-1 rounded-full text-sm font-semibold" :class="getStatusClass(project.status)">
-                   {{ project.status }}
-                 </span>
-               </div>
-
-               <p class="project-description">
-                 {{ project.description }}
-               </p>
-
-               <div class="mb-4">
-                 <h4 class="text-white font-semibold mb-2">Technologies</h4>
-                 <div class="flex flex-wrap gap-2">
-                   <span
-                     v-for="tech in [...(project.technologies as TechnologyStack).backend, ...(project.technologies as TechnologyStack).frontend, ...(project.technologies as TechnologyStack).tools]"
-                     :key="tech" class="project-tech-badge">
-                     {{ tech }}
-                   </span>
-                 </div>
-               </div>
-
-               <div class="flex gap-4">
-                 <a v-if="project.github_backend" :href="project.github_backend" target="_blank"
-                   rel="noopener noreferrer"
-                   class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
-                   <span class="mr-2">📦</span>
-                   Backend
-                 </a>
-                 <a v-if="project.github_frontend" :href="project.github_frontend" target="_blank"
-                   rel="noopener noreferrer"
-                   class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
-                   <span class="mr-2">📦</span>
-                   Frontend
-                 </a>
-                 <a v-if="project.github && !project.github_backend && !project.github_frontend" :href="project.github"
-                   target="_blank" rel="noopener noreferrer"
-                   class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
-                   <span class="mr-2">📦</span>
-                   GitHub
-                 </a>
-                 <a v-if="project.live_demo" :href="project.live_demo" target="_blank" rel="noopener noreferrer"
-                   class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
-                   <span class="mr-2">🔗</span>
-                   Live Demo
-                 </a>
-               </div>
-             </div>
-           </div>
-        </div>
-
-        <!-- Other Projects -->
-        <div>
-          <h3 class="text-2xl font-bold text-white mb-8">Other Projects</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div v-for="(project, index) in portfolioData.other_projects" :key="project.name"
-              class="card hover:-translate-y-1 transition-transform duration-300">
-              <h4 class="text-lg font-bold text-white mb-2">{{ project.name }}</h4>
-              <p class="text-blue-500 text-sm font-semibold mb-2">{{ project.type }}</p>
-              <p class="text-gray-400 text-sm mb-4">{{ project.description }}</p>
-              <div class="flex flex-wrap gap-1 mb-4">
-                <span v-for="tech in (project.technologies as string[]).slice(0, 3)" :key="tech"
-                  class="text-xs px-2 py-1 bg-gray-700 text-gray-300 rounded">
-                  {{ tech }}
-                </span>
+        <div class="row g-4 mb-5">
+          <div class="col-12 col-lg-6" v-for="project in portfolioData.major_projects" :key="project.name">
+            <div class="project-card h-100">
+              <div v-if="project.image">
+                <img :src="project.image" :alt="project.name" class="project-image" />
               </div>
-              <a :href="project.github" target="_blank" rel="noopener noreferrer"
-                class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
-                <span class="mr-2">📦</span>
-                View
-              </a>
+              <div class="project-content">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                  <div>
+                    <h3 class="project-title mb-1">{{ project.name }}</h3>
+                    <p class="fw-semibold mb-0" style="color: var(--primary);">{{ project.type }}</p>
+                  </div>
+                  <span class="project-status-badge" :class="getStatusClass(project.status)">{{ project.status }}</span>
+                </div>
+
+                <p class="project-description">{{ project.description }}</p>
+
+                <p class="fw-semibold text-white small mb-2">Technologies</p>
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                  <span
+                    v-for="tech in [...(project.technologies as TechnologyStack).backend, ...(project.technologies as TechnologyStack).frontend, ...(project.technologies as TechnologyStack).tools]"
+                    :key="tech" class="project-tech-badge">
+                    {{ tech }}
+                  </span>
+                </div>
+
+                <div class="d-flex gap-3">
+                  <a v-if="project.github_backend" :href="project.github_backend" target="_blank" rel="noopener noreferrer" class="project-link">📦 Backend</a>
+                  <a v-if="project.github_frontend" :href="project.github_frontend" target="_blank" rel="noopener noreferrer" class="project-link">📦 Frontend</a>
+                  <a v-if="project.github && !project.github_backend && !project.github_frontend" :href="project.github" target="_blank" rel="noopener noreferrer" class="project-link">📦 GitHub</a>
+                  <a v-if="project.live_demo" :href="project.live_demo" target="_blank" rel="noopener noreferrer" class="project-link">🔗 Live Demo</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="fw-bold text-white mb-4">Other Projects</h3>
+        <div class="row g-4">
+          <div class="col-12 col-sm-6 col-lg-3" v-for="project in portfolioData.other_projects" :key="project.name">
+            <div class="card h-100 d-flex flex-column">
+              <h4 class="fw-bold text-white mb-1 fs-6">{{ project.name }}</h4>
+              <p class="fw-semibold small mb-2" style="color: var(--primary);">{{ project.type }}</p>
+              <p class="text-secondary small mb-3">{{ project.description }}</p>
+              <div class="d-flex flex-wrap gap-1 mb-3">
+                <span v-for="tech in (project.technologies as string[]).slice(0, 3)" :key="tech" class="project-tech-badge">{{ tech }}</span>
+              </div>
+              <a :href="project.github" target="_blank" rel="noopener noreferrer" class="project-link mt-auto">📦 View</a>
             </div>
           </div>
         </div>
@@ -318,71 +200,54 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section-padding bg-gray-900">
-      <div class="container-custom">
-        <div class="text-center mb-16">
-          <h2 class="section-title">Get In Touch</h2>
-          <p class="section-subtitle">Let's work together</p>
-        </div>
+    <section id="contact" class="section-padding bg-dark-1">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Let's work together</p>
 
-        <div class="max-w-2xl mx-auto">
-          <div class="card">
-            <form @submit.prevent="handleSubmit">
-              <div class="mb-6">
-                <label for="name" class="block text-white font-semibold mb-2">Name</label>
-                <input id="name" v-model="form.name" type="text" class="input-field" placeholder="Your name" required />
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8 col-lg-6">
+            <div class="card">
+              <form @submit.prevent="handleSubmit">
+                <div class="mb-4">
+                  <label for="name" class="form-label fw-semibold text-white mb-2">Name</label>
+                  <input id="name" v-model="form.name" type="text" class="input-field" placeholder="Your name" required />
+                </div>
+                <div class="mb-4">
+                  <label for="email" class="form-label fw-semibold text-white mb-2">Email</label>
+                  <input id="email" v-model="form.email" type="email" class="input-field" placeholder="your@email.com" required />
+                </div>
+                <div class="mb-4">
+                  <label for="message" class="form-label fw-semibold text-white mb-2">Message</label>
+                  <textarea id="message" v-model="form.message" rows="5" class="input-field" placeholder="Your message..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-100">Send Message</button>
+              </form>
+            </div>
+
+            <div class="mt-5 text-center">
+              <p class="text-muted mb-3">Or reach out directly</p>
+              <div class="d-flex justify-content-center gap-4">
+                <a :href="`mailto:${portfolioData.contact.email}`" class="project-link">✉️ Email</a>
+                <a :href="portfolioData.social.whatsapp" target="_blank" rel="noopener noreferrer" class="project-link">💬 WhatsApp</a>
               </div>
-
-              <div class="mb-6">
-                <label for="email" class="block text-white font-semibold mb-2">Email</label>
-                <input id="email" v-model="form.email" type="email" class="input-field" placeholder="your@email.com"
-                  required />
-              </div>
-
-              <div class="mb-6">
-                <label for="message" class="block text-white font-semibold mb-2">Message</label>
-                <textarea id="message" v-model="form.message" rows="5" class="input-field" placeholder="Your message..."
-                  required></textarea>
-              </div>
-
-              <button type="submit" class="btn-primary w-full">
-                Send Message
-              </button>
-            </form>
-          </div>
-
-          <div class="mt-12 text-center">
-            <p class="text-gray-400 mb-6">Or reach out directly</p>
-            <div class="flex justify-center gap-6">
-              <a :href="`mailto:${portfolioData.contact.email}`"
-                class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
-                <span class="mr-2 text-xl">✉️</span>
-                Email
-              </a>
-              <a :href="portfolioData.social.whatsapp" target="_blank" rel="noopener noreferrer"
-                class="flex items-center text-gray-400 hover:text-white transition-colors duration-300">
-                <span class="mr-2 text-xl">💬</span>
-                WhatsApp
-              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Photo Gallery Modal -->
-    <div v-if="showGallery" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-      @click="showGallery = false">
-      <div class="relative max-w-4xl max-h-screen overflow-auto" @click.stop>
-        <button @click="showGallery = false"
-          class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition-colors">
-          ×
-        </button>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div v-for="(photo, index) in portfolioData.gallery" :key="index" class="gallery-item">
-            <img :src="photo.image" :alt="photo.alt" class="gallery-image" />
-            <div class="gallery-overlay">
-              <p class="gallery-caption">{{ photo.alt }}</p>
+    <!-- Gallery Modal -->
+    <div v-if="showGallery" class="gallery-modal" @click="showGallery = false">
+      <div class="gallery-modal-inner" @click.stop>
+        <button @click="showGallery = false" class="gallery-close">×</button>
+        <div class="row g-3">
+          <div v-for="(photo, index) in portfolioData.gallery" :key="index" class="col-12 col-md-6 col-lg-4">
+            <div class="gallery-item">
+              <img :src="photo.image" :alt="photo.alt" class="gallery-image" />
+              <div class="gallery-overlay">
+                <p class="gallery-caption">{{ photo.alt }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -396,38 +261,31 @@ import { ref } from 'vue'
 import { portfolioData, type TechnologyStack } from '../data/portfolio'
 
 const showGallery = ref(false)
+const form = ref({ name: '', email: '', message: '' })
 
-const form = ref({
-  name: '',
-  email: '',
-  message: ''
-})
+const skillCategories = {
+  backend:  { icon: '⚙️', label: 'Backend' },
+  frontend: { icon: '💻', label: 'Frontend' },
+  tools:    { icon: '🔧', label: 'Tools' },
+  other:    { icon: '✨', label: 'Other' },
+}
 
 const getSkillWidth = (level: string) => {
-  const levelMap: Record<string, number> = {
-    'Beginner': 25,
-    'Intermediate': 50,
-    'Advanced': 75,
-    'Expert': 100
-  }
-  return `${levelMap[level] || 50}%`
+  const map: Record<string, number> = { Beginner: 25, Intermediate: 50, Advanced: 75, Expert: 100 }
+  return `${map[level] || 50}%`
 }
 
 const getStatusClass = (status: string) => {
-  const statusMap: Record<string, string> = {
-    'In Progress': 'bg-yellow-500 text-white',
-    'Completed': 'bg-green-500 text-white',
-    'On Hold': 'bg-red-500 text-white'
+  const map: Record<string, string> = {
+    'In Progress': 'status-progress',
+    'Completed':   'status-completed',
+    'On Hold':     'status-hold',
   }
-  return statusMap[status] || 'bg-gray-500 text-white'
+  return map[status] || 'status-hold'
 }
 
 const handleSubmit = () => {
   alert('Thank you for your message! This is a demo form.')
-  form.value = {
-    name: '',
-    email: '',
-    message: ''
-  }
+  form.value = { name: '', email: '', message: '' }
 }
 </script>
