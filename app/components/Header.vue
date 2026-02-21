@@ -1,55 +1,29 @@
 <template>
-  <header
-    class="fixed-top border-bottom border-secondary"
-    :class="isScrolled ? 'py-1' : 'py-3'"
-    style="background: rgba(10,10,15,0.95); backdrop-filter: blur(20px); transition: padding 0.3s ease; z-index: 1030;"
-  >
-    <div class="container">
-      <nav class="d-flex align-items-center justify-content-between">
-        <!-- Logo -->
-        <NuxtLink to="/" class="text-decoration-none fw-bold fs-4 text-gradient">
-          HA
-        </NuxtLink>
+  <header class="navbar" :class="{ scrolled: isScrolled }">
+    <div class="container" style="justify-content:stretch">
+      <div class="navbar-inner" style="justify-content: space-between;">
+        <NuxtLink to="/" class="navbar-logo">HA</NuxtLink>
 
-        <!-- Desktop Navigation -->
-        <ul class="d-none d-md-flex align-items-center gap-4 list-unstyled mb-0">
+        <!-- Desktop -->
+        <ul class="nav-list">
           <li v-for="item in navItems" :key="item.name">
-            <a
-              :href="item.href"
-              class="nav-link py-2 px-1"
-              :class="{ 'nav-link-active': activeSection === item.section }"
-              @click.prevent="scrollToSection(item.section)"
-            >
-              {{ item.name }}
-            </a>
+            <a :href="item.href" class="nav-link" :class="{ active: activeSection === item.section }"
+              @click.prevent="scrollToSection(item.section)">{{ item.name }}</a>
           </li>
         </ul>
 
-        <!-- Mobile Menu Button -->
-        <button
-          class="d-md-none btn btn-link text-white p-0 border-0"
-          @click="toggleMobileMenu"
-          aria-label="Toggle menu"
-        >
-          <span class="fs-4">{{ isMobileMenuOpen ? '✕' : '☰' }}</span>
+        <!-- Mobile toggle -->
+        <button class="nav-mobile-btn" @click="toggleMobileMenu" aria-label="Toggle menu">
+          {{ isMobileMenuOpen ? '✕' : '☰' }}
         </button>
-      </nav>
-
-      <!-- Mobile Menu -->
-      <div v-show="isMobileMenuOpen" class="d-md-none mt-3 pt-3 border-top border-secondary">
-        <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
-          <li v-for="item in navItems" :key="item.name">
-            <a
-              :href="item.href"
-              class="nav-link d-block"
-              :class="{ 'nav-link-active': activeSection === item.section }"
-              @click.prevent="scrollToSection(item.section); isMobileMenuOpen = false"
-            >
-              {{ item.name }}
-            </a>
-          </li>
-        </ul>
       </div>
+
+      <!-- Mobile menu -->
+      <nav class="nav-mobile-menu" :class="{ open: isMobileMenuOpen }">
+        <a v-for="item in navItems" :key="item.name" :href="item.href" class="nav-link"
+          :class="{ active: activeSection === item.section }"
+          @click.prevent="scrollToSection(item.section); isMobileMenuOpen = false">{{ item.name }}</a>
+      </nav>
     </div>
   </header>
 </template>
@@ -62,19 +36,19 @@ const isMobileMenuOpen = ref(false)
 const activeSection = ref('hero')
 
 const navItems = [
-  { name: 'Home',       href: '#hero',       section: 'hero' },
-  { name: 'About',      href: '#about',      section: 'about' },
-  { name: 'Skills',     href: '#skills',     section: 'skills' },
+  { name: 'Home', href: '#hero', section: 'hero' },
+  { name: 'About', href: '#about', section: 'about' },
+  { name: 'Skills', href: '#skills', section: 'skills' },
   { name: 'Experience', href: '#experience', section: 'experience' },
-  { name: 'Projects',   href: '#projects',   section: 'projects' },
-  { name: 'Contact',    href: '#contact',    section: 'contact' },
+  { name: 'Projects', href: '#projects', section: 'projects' },
+  { name: 'Contact', href: '#contact', section: 'contact' },
 ]
 
-const scrollToSection = (sectionId: string) => {
-  const element = document.getElementById(sectionId)
-  if (element) {
-    const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - 80
-    window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
+const scrollToSection = (id: string) => {
+  const el = document.getElementById(id)
+  if (el) {
+    const top = el.getBoundingClientRect().top + window.pageYOffset - 72
+    window.scrollTo({ top, behavior: 'smooth' })
   }
 }
 
@@ -84,10 +58,7 @@ const handleScroll = () => {
     const el = document.getElementById(item.section)
     if (el) {
       const rect = el.getBoundingClientRect()
-      if (rect.top <= 100 && rect.bottom >= 100) {
-        activeSection.value = item.section
-        break
-      }
+      if (rect.top <= 100 && rect.bottom >= 100) { activeSection.value = item.section; break }
     }
   }
 }
